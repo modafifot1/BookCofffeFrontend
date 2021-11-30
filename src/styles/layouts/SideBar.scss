@@ -1,0 +1,45 @@
+.app-admin {
+  .sidebar-container {
+    height: 100vh;
+    .MuiPaper-root {
+      // background-image: url("../../assets/SideBannerOffical.png");
+      .header-sidebar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        & > img {
+          width: 70px;
+          height: 70px;
+          margin-left: -4px;
+          margin-top: 12px;
+        }
+      }
+      ul {
+        padding: 0px 10px;
+        .active {
+          background-color: rgba(59, 196, 126, 0.8);
+          border-radius: 50px;
+          .MuiListItemText-root {
+            .MuiTypography-body1 {
+              color: white !important;
+            }
+          }
+        }
+        .MuiListItem-gutters {
+          .MuiListItemIcon-root {
+            min-width: 45px !important;
+            color: #4b4b49;
+          }
+          .MuiListItemText-root {
+            .MuiTypography-body1 {
+              font-family: "Rajdhani", sans-serif !important;
+              color: #4b4b49;
+              font-weight: 600 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

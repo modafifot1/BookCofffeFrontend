@@ -1,0 +1,63 @@
+.normal-button {
+  width: 100%;
+  padding: 11px 40%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  transition: all, 240ms ease-in-out;
+}
+.normal-button:hover {
+  filter: brightness(1.03);
+}
+.submit-button {
+  background: rgb(110, 199, 176);
+  background: linear-gradient(
+    58deg,
+    rgba(110, 199, 176, 1) 20%,
+    rgba(110, 199, 176, 1) 100%
+  );
+}
+
+.add-button {
+  background: rgb(40, 186, 147);
+  background: linear-gradient(
+    58deg,
+    rgba(40, 186, 147, 1) 20%,
+    rgba(40, 186, 147, 1) 100%
+  );
+}
+.danger-button {
+  background: rgb(216, 0, 0);
+  background: linear-gradient(
+    58deg,
+    rgba(216, 0, 0, 1) 20%,
+    rgba(216, 0, 0, 1) 100%
+  );
+}
+
+.circle-button {
+  width: 35px;
+  height: 35px;
+  padding: 1px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all, 240ms ease-in-out;
+}
+.circle-button:hover {
+  filter: brightness(1.2);
+}
+.circle-add-button {
+  color: #6ec7b0;
+  border: 1px solid #6ec7b0;
+  background-color: rgba(110, 199, 176, 0.1);
+}
+.circle-danger-button {
+  color: #d80000;
+  border: 1px;
+  background-color: rgba(216, 0, 0, 0.1);
+}

@@ -1,0 +1,19 @@
+.app-admin {
+  &__app-bar {
+    // background-image: linear-gradient(
+    //   to right,
+    //   #2daab8,
+    //   #58aeb7,
+    //   #6cb0b7
+    // ) !important;
+    background-color: rgb(59, 196, 126) !important;
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 3px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%) !important;
+    .btn--menu {
+      color: black !important;
+      padding: 5px;
+      flex-shrink: 0;
+      align-self: center;
+    }
+  }
+}

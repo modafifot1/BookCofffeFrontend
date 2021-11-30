@@ -1,0 +1,64 @@
+// font-family
+body {
+  font-family: "Poppins", sans-serif !important;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+  }
+}
+// definition new style
+
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.j-space-between {
+  justify-content: space-between;
+}
+.pointer {
+  cursor: pointer;
+}
+body {
+  margin: 0px;
+  #root {
+    height: 100%;
+  }
+}
+
+// .app {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   &__body {
+//     margin: 0px 10%;
+//   }
+// }
+.app-admin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  &__body {
+    padding-top: 80px !important;
+    background-color: rgba(45, 170, 184, 0.2);
+    height: calc(100% - 86px);
+    &__inner {
+      padding: 15px;
+    }
+  }
+}
+.MuiMenuItem-root,
+.MuiMenuItem-gutters,
+.MuiButtonBase-root {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
+  font-weight: 100 !important;
+}
