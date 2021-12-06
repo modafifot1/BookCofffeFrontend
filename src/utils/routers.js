@@ -6,7 +6,8 @@ const RESETPASSWORD_ROUTE = "/reset-password";
 const EMPLOYEE_MANAMENT = "/employee-management";
 const STATISTIC_MANAGEMENT = "/statistic-management";
 const USER_MANAGEMENT = "/user-management";
-const PRODUCT_MANAGEMENT = "/product-management";
+const PRODUCT_MANAGEMENT =
+  "/product-management?searchText=:searchText&page=:page&foodType=:foodType&orderBy=:orderBy&orderType=:orderType";
 const ORDER_MANAGEMENT = "/order-management";
 const BOOK_MANAGEMENT = "/book-management";
 const BANDR_BOOK_MANAGEMENT = "/bandr-book-management";

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { authApi } from "../../apis/index";
+import { authApi, axiosClient } from "../../apis/index";
 import Cookies from "js-cookie";
 const initialState = {
   error: null,
@@ -14,6 +14,9 @@ export const login = createAsyncThunk(
       console.log("Login Datasdsdsd: ", data);
       const res = await authApi.login(data);
       Cookies.set("token", res.token);
+      axiosClient.defaults.headers.authorization = `Bearer ${Cookies.get(
+        "token"
+      )}`;
       return res;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "@material-ui/icons";
 export const Input = (props) => {
   const { label, name, type, locked, onChangeValue, value, error, onFocus } =
@@ -26,13 +26,21 @@ export const Input = (props) => {
     </div>
   );
 };
-export const SearchInput = ({ onChange, onBlur }) => {
+export const SearchInput = ({ onClick, value }) => {
+  const [searchText, setSearchText] = useState("");
+  useEffect(() => {
+    setSearchText(value);
+  }, [value]);
   return (
     <div className="search-input-container">
-      <div className="search-icon">
+      <div className="search-icon" onClick={() => onClick(searchText)}>
         <Search></Search>
       </div>
-      <input className="search-input"></input>
+      <input
+        className="search-input"
+        onChange={(e) => setSearchText(e.target.value)}
+        value={searchText}
+      ></input>
     </div>
   );
 };

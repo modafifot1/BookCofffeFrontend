@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route path={LOGIN_ROUTE} component={withAuth(LoginPage)}></Route>
         <Route
-          path={PRODUCT_MANAGEMENT}
+          path={[PRODUCT_MANAGEMENT, "/product-management"]}
           component={withAuthor(ProductManagement)}
         ></Route>
       </Switch>

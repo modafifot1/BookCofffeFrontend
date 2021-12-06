@@ -69,9 +69,10 @@
       flex-wrap: wrap;
       .food-filtering-type {
         height: 60%;
-        .MuiOutlinedInput-root {
+        .MuiFormControl-root {
           height: 100%;
-          .MuiSelect-select {
+          .MuiOutlinedInput-root {
+            height: 100%;
             font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
           }
         }
@@ -95,6 +96,13 @@
         }
       }
     }
+  }
+  .loading {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .product-management-content {
     // flex-wrap: wrap;

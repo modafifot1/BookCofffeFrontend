@@ -1,34 +1,43 @@
 .food-container {
+  flex-shrink: 0;
   cursor: pointer;
   background-color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
   width: 100%;
-  height: 320px;
   box-shadow: 2px 2px 10px #a5adc6;
   border-radius: 5px;
   .food-image {
     width: 100%;
     height: 180px;
     border-radius: 5px 5px 0px 0px;
-    img {
+    .image {
       border-radius: 5px 5px 0px 0px;
       width: calc(100% - 40px);
       height: 100%;
       object-fit: fill;
       margin: 20px;
+      position: relative;
+      .MuiSkeleton-root,
+      img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+      }
     }
   }
   .food-content {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding: 12px 10px;
     height: calc(100% - 180px);
-    margin-top: 10px;
+    // margin: 10px 0;
     .food-name {
       padding: 10px 0px 0px 10px;
       flex: 1;
       font-size: 16px;
-      margin-top: 20px;
+      margin-top: 10px;
       word-break: normal;
     }
     .food-info {
@@ -39,6 +48,7 @@
       align-items: center;
       color: rgb(255, 88, 146);
       padding: 0px 10px 0px 10px;
+      margin: 5px 0;
       .food-price {
         display: flex;
         align-items: center;
@@ -63,7 +73,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      padding-bottom: 20px;
       .rating {
         margin-top: auto;
         display: flex;

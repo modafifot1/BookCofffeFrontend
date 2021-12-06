@@ -1,2 +1,4 @@
 import { authApi } from "./authApi";
-export { authApi };
+import { productApi } from "./productApi";
+import { axiosClient } from "./axiosClient";
+export { authApi, productApi, axiosClient };
