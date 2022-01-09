@@ -104,8 +104,8 @@ export const LoginPage = () => {
         />
 
         <HeaderContainer>
-          <HeaderText>{"Wecome back"}</HeaderText>
-          <SmallText>{"Please sign-in to continue!"}</SmallText>
+          <HeaderText>{"Chào mừng bạn"}</HeaderText>
+          <SmallText>{"Vui lòng đăng nhập để tiếp tục!"}</SmallText>
         </HeaderContainer>
       </TopContainer>
       <InnerContainer>
@@ -124,7 +124,7 @@ export const LoginPage = () => {
             />
             <Input
               name="password"
-              label="Password"
+              label="Mật khẩu"
               locked={false}
               active={false}
               type="password"
@@ -140,10 +140,10 @@ export const LoginPage = () => {
                 ? "Tài khoản email không hợp lệ"
                 : ""}
             </div>
-            <MutedLink href={"#"}>Forgot your password?</MutedLink>
-            <SubmitButton onclick={onSubmit}>Login</SubmitButton>
+            <MutedLink href={"#"}>Quên mật khẩu?</MutedLink>
+            <SubmitButton onclick={onSubmit}>Đăng nhập</SubmitButton>
             <MutedLink href="#">
-              Don't have an accoun? <BoldLink href="#">Signup</BoldLink>
+              Bạn chưa có tài khoản? <BoldLink href="#">Đăng ký</BoldLink>
             </MutedLink>
           </FormContainer>
         </BoxContainer>
