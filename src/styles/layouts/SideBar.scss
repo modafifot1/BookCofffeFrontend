@@ -18,12 +18,19 @@
       ul {
         padding: 0px 10px;
         .active {
-          background-color: rgba(59, 196, 126, 0.8);
+          // background-color: rgba(59, 196, 126, 0.8);
+
+          background-color: rgb(28, 43, 61);
+
           border-radius: 50px;
           .MuiListItemText-root {
             .MuiTypography-body1 {
               color: white !important;
             }
+          }
+          .MuiListItemIcon-root {
+            min-width: 45px !important;
+            color: white !important;
           }
         }
         .MuiListItem-gutters {

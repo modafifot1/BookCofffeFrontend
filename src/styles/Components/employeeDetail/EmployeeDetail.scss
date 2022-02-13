@@ -1,0 +1,94 @@
+.employee-detail-container {
+  .employee-detail-box {
+    padding: 8px 16px 32px 32px !important;
+    .employee-detail-icon-close {
+      width: 100%;
+      text-align: right;
+      .MuiButtonBase-root {
+        color: red;
+        .MuiSvgIcon-root {
+          font-size: 28px;
+        }
+      }
+    }
+    .new-lable {
+      color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        color: #29662c;
+        margin: 0 10px;
+      }
+    }
+    .control-button {
+      display: flex;
+      justify-content: end;
+      .delete-button {
+        color: white;
+        margin-right: 20px;
+      }
+      .edit-button {
+        color: white;
+        margin-right: 20px;
+      }
+    }
+    .employee-detail-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      .employee-detail-display {
+        min-width: 30%;
+        display: flex;
+        .food-container {
+          padding: 10px;
+        }
+      }
+      .employee-detail-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 30px;
+        flex: 1;
+        .employeeStatus {
+          margin-top: 10px;
+          padding: 5px;
+          border-radius: 10px;
+          font-weight: 600;
+          font-size: 16px;
+          width: fit-content;
+        }
+        .employeeStatus.true {
+          background-color: rgba(59, 196, 126, 0.3);
+          color: rgb(59, 196, 126);
+          border: 2px solid rgb(59, 196, 126);
+        }
+        .employeeStatus.false {
+          border: 2px solid red;
+          background-color: rgba($color: #ff0000, $alpha: 0.3);
+          color: #ff0000;
+        }
+        .employee-detail-input {
+          &:not(:first-child) {
+            margin-top: 20px;
+          }
+          .MuiInputLabel-root {
+            top: -8px;
+          }
+          .MuiOutlinedInput-input {
+            height: 28px;
+            padding: 5px 10px;
+          }
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+}

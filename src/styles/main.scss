@@ -6,9 +6,14 @@
 @import "./Components/CommonInput.scss";
 @import "./Components/category/FoodCategory.scss";
 @import "./Components/productDetail/ProductDetail.scss";
+@import "./Components/employeeDetail/EmployeeDetail.scss";
+@import "./Components/orderCard/orderCard.scss";
 
 @import "./pages/LoginPage.scss";
 @import "./pages/ProductManagement.scss";
+@import "./pages/EmployeeManament.scss";
 
 @import "./layouts/SideBar.scss";
 @import "./layouts/HeaderBar.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;700&&family=Noto+Serif:wght@400;700&display=swap");

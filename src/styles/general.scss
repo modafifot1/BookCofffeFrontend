@@ -61,3 +61,24 @@ body {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif !important;
   font-weight: 100 !important;
 }
+.custom-table-row:hover {
+  background-color: rgba(59, 196, 126, 0.2) !important;
+  cursor: pointer;
+}
+
+.employeeType {
+  padding: 5px;
+  border-radius: 10px;
+  width: fit-content;
+  font-weight: 600;
+}
+.employeeType.true {
+  background-color: rgba(59, 196, 126, 0.3);
+  color: rgb(59, 196, 126);
+  border: 2px solid rgb(59, 196, 126);
+}
+.employeeType.false {
+  border: 2px solid red;
+  background-color: rgba($color: #ff0000, $alpha: 0.3);
+  color: #ff0000;
+}
