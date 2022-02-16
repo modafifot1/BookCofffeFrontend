@@ -1,12 +1,10 @@
-import { LocalBar } from "@material-ui/icons";
+import { AccountBox } from "@material-ui/icons";
 import {
   Box,
   Button,
   CircularProgress,
   FormControl,
-  Grid,
   InputLabel,
-  Modal,
   NativeSelect,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -15,7 +13,6 @@ import { SearchInput } from "../components/common/CommonInput";
 import AddIcon from "@mui/icons-material/Add";
 import EnhancedTable from "../components/employeeTable/EnhancedTable";
 import { getEmployees, setEmployeeId } from "../redux/slices/employeeSlice";
-import { EmployeeDetail } from "../components/employeeDetail/employeeDetail";
 import { convertQuery2String } from "../utils";
 
 export const EmployeeManagement = () => {
@@ -30,7 +27,6 @@ export const EmployeeManagement = () => {
     dispatch(getEmployees());
   }, []);
   useEffect(() => {
-    // if (!employees.data.length) return;
     setData(employees.data);
   }, [employees.data]);
   const onSearch = (searchText) => {
@@ -53,7 +49,7 @@ export const EmployeeManagement = () => {
     <div className="employee-management-container">
       <div className="page-title">
         <div className="page-icon">
-          <LocalBar></LocalBar>
+          <AccountBox />
         </div>
         <div className="page-title-content">
           <div className="page-title-content-header">Nhân viên</div>

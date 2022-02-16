@@ -1,9 +1,12 @@
 .flip-card-outer {
   //   width: 300px;
-  width: 90%;
+  width: 80%;
   height: 250px;
   margin: 25px auto;
-  background-color: white !important;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  // background-color: white !important;
   &.focus-trigger:focus {
     outline: 5px solid greenyellow;
     outline-offset: 5px;
@@ -30,6 +33,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      border-radius: 10px;
       .order-card-container {
         display: flex;
         border: 2px solid rgb(28, 43, 61);
@@ -37,17 +41,52 @@
         //   border: 3px solid rgb(59, 196, 126);
         //   background-color: rgba(59, 196, 126, 0.6);
         border-radius: 10px;
-        min-height: 250px;
+        max-height: 250px;
         flex-wrap: wrap;
         // width: 90%;
         margin: auto;
         font-family: "Noto Serif", serif;
+        // font-family: "Times New Roman", Georgia, Serif;
+
         letter-spacing: 0.08em;
         color: "#EF0444";
-        cursor: pointer;
         .oder-card-image {
           width: fit-content;
-          margin: auto 50px;
+          margin: 10px 50px 10px 50px;
+          .order-status {
+            text-align: center;
+            font-weight: 700;
+            color: black;
+          }
+          img {
+            padding: 10px 0px;
+            object-fit: fill;
+            width: 100%;
+            height: 150px;
+            border-radius: 20px;
+          }
+          .button-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+              background-color: rgb(28, 43, 61);
+              color: white;
+              padding: 5px 10px;
+              border-radius: 10px;
+              // font-family: "Noto Serif", serif;
+              font-family: "Times New Roman", Georgia, Serif;
+              border: unset;
+              cursor: pointer;
+              &:hover {
+                background-color: rgba(28, 43, 61, 0.8);
+              }
+            }
+
+            .next-button {
+              margin-left: 10px;
+            }
+          }
         }
         .order-card-detail {
           display: flex;
@@ -55,7 +94,7 @@
           flex-wrap: wrap;
           background-color: rgb(28, 43, 61);
           color: white;
-          padding: 30px 80px;
+          padding: 10px 60px 0px 60px;
           padding-right: 0px;
           border-bottom-left-radius: 100px;
           flex: 1;
@@ -72,11 +111,11 @@
             margin-right: 50px;
             label {
               font-weight: 700;
-              font-size: 16px;
+              font-size: 14px;
             }
             .detail-content {
               margin-left: 5px;
-              font-size: 14px;
+              font-size: 12px;
               background-color: rgb(52, 185, 209);
               color: black;
               padding: 3px 10px;
@@ -104,10 +143,10 @@
           .order-card-detail-status {
             .paid-status-icon {
               position: absolute;
-              top: 80px;
+              top: 60px;
               right: 50px;
               width: 250px;
-              height: 120px;
+              height: 150px;
             }
           }
           .right-side {
@@ -135,9 +174,121 @@
         //   border: 3px solid rgb(59, 196, 126);
         //   background-color: rgba(59, 196, 126, 0.6);
         border-radius: 10px;
-        min-height: 250px;
         color: #2d2d2d;
+        padding: 0px 20px;
         height: 250px;
+        .card-header {
+          display: flex;
+          align-items: center;
+          .card-button-control {
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: rgb(28, 43, 61);
+            width: fit-content;
+            &:hover {
+              background-color: rgba(28, 43, 61, 0.8);
+            }
+
+            .MuiSvgIcon-root {
+              font-size: 12px;
+            }
+          }
+          div {
+            text-align: center;
+            font-weight: 700;
+            flex: 1;
+          }
+        }
+
+        .order-detail-container {
+          .order-item-list {
+            overflow-x: scroll;
+            max-height: 200px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            .order-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 40%;
+              margin-bottom: 10px;
+              padding-bottom: 10px;
+              border-bottom: 1px solid gray;
+              border-bottom-style: dashed;
+              margin-right: 20px;
+              // border: 1px solid rgb(28, 43, 61);
+              .order-item-image {
+                width: 60px;
+                height: 40px;
+                object-fit: fill;
+                margin-left: 10px;
+              }
+              .order-item-content {
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-left: 10px;
+
+                .order-item-discountOff {
+                  border-radius: 15px;
+                  padding: 5px 10px;
+                  color: white;
+                  background-color: orangered;
+                  width: fit-content;
+                  font-size: 12px;
+                  font-style: italic;
+                }
+                .order-item-name {
+                  max-width: 150px;
+                  word-break: keep-all;
+                }
+              }
+              .order-item-quantity {
+                font-weight: 700;
+                margin-left: 10px;
+              }
+              .order-item-result {
+                border-radius: 15px;
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                background-color: rgb(28, 43, 61);
+                margin-left: 10px;
+              }
+            }
+          }
+          .order-total {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            margin-right: 250px;
+            margin-top: 10px;
+            label {
+              font-weight: 700;
+            }
+            .order-total-content {
+              margin-left: 20px;
+              border-radius: 15px;
+              padding: 5px 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              background-color: rgb(28, 43, 61);
+            }
+          }
+        }
       }
     }
   }

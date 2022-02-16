@@ -7,9 +7,9 @@ import {
   AccountBox,
   Timeline,
   MenuBook,
-  ArrowBack,
   LocalBar,
-  Menu,
+  Description,
+  LibraryBooks,
 } from "@material-ui/icons";
 import Drawer from "@material-ui/core/Drawer";
 import { useSelector } from "react-redux";
@@ -46,7 +46,7 @@ const categories = [
   },
   {
     id: 2,
-    name: "Quản lý người dùng",
+    name: "Quản lý khách hàng",
     url: USER_MANAGEMENT,
     icon: AccountBox,
   },
@@ -60,7 +60,7 @@ const categories = [
     id: 4,
     name: "Quản lý đơn hàng",
     url: ORDER_MANAGEMENT,
-    icon: Menu,
+    icon: Description,
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ const categories = [
     id: 6,
     name: "Quản lý mượn trả sách",
     url: BANDR_BOOK_MANAGEMENT,
-    icon: ArrowBack,
+    icon: LibraryBooks,
   },
 ];
 

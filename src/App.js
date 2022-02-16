@@ -9,6 +9,9 @@ import {
   EmployeeManagement,
   CustomerManagement,
   OrderManagement,
+  BorrowAndReturnBookManagement,
+  StatisticManagement,
+  BookManagement,
 } from "./pages";
 import { withAuth, withAuthor } from "./HOCS";
 const {
@@ -20,6 +23,9 @@ const {
   EMPLOYEE_MANAMENT,
   USER_MANAGEMENT,
   ORDER_MANAGEMENT,
+  BANDR_BOOK_MANAGEMENT,
+  STATISTIC_MANAGEMENT,
+  BOOK_MANAGEMENT,
 } = routers;
 
 function App() {
@@ -42,6 +48,18 @@ function App() {
         <Route
           path={ORDER_MANAGEMENT}
           component={withAuthor(OrderManagement)}
+        ></Route>
+        <Route
+          path={BANDR_BOOK_MANAGEMENT}
+          component={withAuthor(BorrowAndReturnBookManagement)}
+        ></Route>
+        <Route
+          path={STATISTIC_MANAGEMENT}
+          component={withAuthor(StatisticManagement)}
+        ></Route>
+        <Route
+          path={BOOK_MANAGEMENT}
+          component={withAuthor(BookManagement)}
         ></Route>
       </Switch>
     </Router>

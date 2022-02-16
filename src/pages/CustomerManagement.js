@@ -1,20 +1,16 @@
-import { LocalBar } from "@material-ui/icons";
+import { AccountBox } from "@material-ui/icons";
 import {
   Box,
-  Button,
   CircularProgress,
   FormControl,
-  Grid,
   InputLabel,
-  Modal,
   NativeSelect,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchInput } from "../components/common/CommonInput";
-import AddIcon from "@mui/icons-material/Add";
 import EnhancedTable from "../components/customerTable/EnhancedTable";
-import { getCustomers, setCustomerId } from "../redux/slices/customerSlice";
+import { getCustomers } from "../redux/slices/customerSlice";
 import { convertQuery2String } from "../utils";
 
 export const CustomerManagement = () => {
@@ -51,7 +47,7 @@ export const CustomerManagement = () => {
     <div className="employee-management-container">
       <div className="page-title">
         <div className="page-icon">
-          <LocalBar></LocalBar>
+          <AccountBox />
         </div>
         <div className="page-title-content">
           <div className="page-title-content-header">Khách hàng</div>

@@ -56,7 +56,7 @@ const ToolbarContainer = (props) => {
           id="tableTitle"
           component="div"
         >
-          Danh sách khách hàng
+          Danh sách nhân viên
         </Typography>
       )}
 

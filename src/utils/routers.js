@@ -9,7 +9,7 @@ const USER_MANAGEMENT = "/user-management";
 const PRODUCT_MANAGEMENT = "/product-management";
 const ORDER_MANAGEMENT = "/order-management";
 const BOOK_MANAGEMENT = "/book-management";
-const BANDR_BOOK_MANAGEMENT = "/bandr-book-management";
+const BANDR_BOOK_MANAGEMENT = "/borrow-return-book-management";
 
 //common
 const DASHBOARD_ROUTE = "/dashboard";
