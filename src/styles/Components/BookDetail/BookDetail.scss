@@ -1,0 +1,70 @@
+.book-detail-container {
+    .book-detail-box {
+      padding: 8px 16px 32px 32px !important;
+      .book-detail-icon-close {
+        width: 100%;
+        text-align: right;
+        .MuiButtonBase-root {
+          color: red;
+          .MuiSvgIcon-root {
+            font-size: 28px;
+          }
+        }
+      }
+      .new-lable {
+        color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        h3 {
+          color: #29662c;
+          margin: 0 10px;
+        }
+      }
+      .control-button {
+        display: flex;
+        justify-content: end;
+        .delete-button {
+          color: white;
+          margin-right: 20px;
+        }
+        .edit-button {
+          color: white;
+          margin-right: 20px;
+        }
+      }
+      .book-detail-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        .book-detail-display {
+          min-width: 30%;
+          display: flex;
+          .food-container {
+            padding: 10px;
+          }
+        }
+        .book-detail-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          margin-left: 30px;
+          flex: 1;
+          .book-detail-input {
+            &:not(:first-child) {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+      .footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+    }
+  }
+  

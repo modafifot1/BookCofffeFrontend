@@ -37,7 +37,7 @@ const initialState = {
   orders: {
     data: [],
     status: null,
-    loading: true,
+    loading: false,
     msg: "",
   },
   order: {
