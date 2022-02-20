@@ -22,8 +22,7 @@ export const bookApi = {
     });
   },
   deleteBook(bookId) {
-    return axiosClient.delete(`/books`, {
-      data: bookId,
+    return axiosClient.delete(`/books/${bookId}`, {
       headers: {
         "Content-Type": "application/json",
       },

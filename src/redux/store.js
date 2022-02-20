@@ -6,6 +6,7 @@ import employeeReducer from "./slices/employeeSlice";
 import customerReducer from "./slices/customerSlice";
 import orderReducer from "./slices/orderSlice";
 import bookReducer from "./slices/bookSlice";
+import borrowedBookReducer from "./slices/borrowedBookSlice";
 const rootReducer = {
   auth: authReducer,
   control: controlReducer,
@@ -14,6 +15,7 @@ const rootReducer = {
   customer: customerReducer,
   order: orderReducer,
   book: bookReducer,
+  borrowedBook: borrowedBookReducer,
 };
 export default configureStore({
   reducer: rootReducer,

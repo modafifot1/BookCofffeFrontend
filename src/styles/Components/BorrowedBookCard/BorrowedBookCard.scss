@@ -1,0 +1,304 @@
+.flip-card-outer {
+  //   width: 300px;
+  width: 80%;
+  height: 250px;
+  margin: 25px auto;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  // background-color: white !important;
+  &.focus-trigger:focus {
+    outline: 5px solid greenyellow;
+    outline-offset: 5px;
+  }
+
+  .flip-card-inner {
+    transform-style: preserve-3d;
+    transition: 0.5s linear 0.1s;
+    position: relative;
+    width: 100%;
+    height: inherit;
+
+    &.hover-trigger:hover {
+      transform: rotateY(180deg);
+    }
+
+    &.showBack {
+      transform: rotateY(180deg);
+    }
+
+    .card {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-radius: 10px;
+      .borrowed-book-card-container {
+        border: 2px solid rgb(28, 43, 61);
+        //   background-color: rgba(255, 118, 100, 0.8);
+        //   border: 3px solid rgb(59, 196, 126);
+        //   background-color: rgba(59, 196, 126, 0.6);
+        border-radius: 10px;
+
+        max-height: 250px;
+        // width: 90%;
+        margin: auto;
+        font-family: "Noto Serif", serif;
+        // font-family: "Times New Roman", Georgia, Serif;
+
+        letter-spacing: 0.08em;
+        color: "#EF0444";
+        .borrowed-book-card-container-inner {
+          margin: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          max-height: 210px;
+          border: 3px solid gray;
+          border-style: dashed;
+          border-radius: 10px;
+          .oder-card-image {
+            width: fit-content;
+            margin: 0px 50px;
+            .borrowed-book-status {
+              text-align: center;
+              font-weight: 700;
+              color: black;
+            }
+            img {
+              padding: 10px 0px;
+              object-fit: fill;
+              width: 120px;
+              height: 180px;
+              border-radius: 20px;
+            }
+          }
+          .borrowed-book-card-detail {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            // background-color: rgb(28, 43, 61);
+            color: rgb(28, 43, 61);
+            padding: 10px 60px 0px 60px;
+            padding-right: 0px;
+            border-bottom-left-radius: 100px;
+            flex: 1;
+            position: relative;
+
+            .borrowed-book-card-detail-item {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              &:not(:last-child) {
+                margin-bottom: 10px;
+              }
+              display: flex;
+              margin-right: 50px;
+              label {
+                font-weight: 700;
+                font-size: 14px;
+              }
+              .detail-content {
+                margin-left: 5px;
+                font-size: 12px;
+                background-color: rgb(52, 185, 209);
+                color: black;
+                padding: 3px 10px;
+                border-radius: 10px;
+                font-weight: 700;
+              }
+              .detail-content.total {
+                background-color: rgb(52, 185, 209);
+                color: black;
+                padding: 3px 10px;
+                border-radius: 10px;
+              }
+              .table-code-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 25px;
+                height: 25px;
+                background-color: rgb(52, 185, 209);
+                color: black;
+                font-weight: 700;
+                border-radius: 50%;
+              }
+            }
+            .borrowed-book-card-detail-status {
+              .button-control {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                button {
+                  background-color: rgb(28, 43, 61);
+                  color: white;
+                  padding: 5px 10px;
+                  border-radius: 10px;
+                  // font-family: "Noto Serif", serif;
+                  font-family: "Times New Roman", Georgia, Serif;
+                  border: unset;
+                  cursor: pointer;
+                  &:hover {
+                    background-color: rgba(28, 43, 61, 0.8);
+                  }
+                }
+
+                .next-button {
+                  margin-left: 10px;
+                }
+              }
+              .paid-status-icon {
+                position: absolute;
+                top: 30px;
+                right: 50px;
+                width: 250px;
+                height: 150px;
+              }
+            }
+            .right-side {
+              background-color: rgb(52, 185, 209);
+              position: absolute;
+              border-bottom-left-radius: 30px;
+              height: 70%;
+              width: 30px;
+              top: -3px;
+              right: -3px;
+            }
+          }
+        }
+      }
+
+      &.front {
+        transform: rotateY(0);
+        background-color: white;
+        color: #fff;
+      }
+
+      &.back {
+        transform: rotateY(180deg);
+        border: 2px solid rgb(28, 43, 61);
+        //   background-color: rgba(255, 118, 100, 0.8);
+        //   border: 3px solid rgb(59, 196, 126);
+        //   background-color: rgba(59, 196, 126, 0.6);
+        border-radius: 10px;
+        color: #2d2d2d;
+        padding: 0px 20px;
+        max-height: 250px;
+        .card-header {
+          display: flex;
+          align-items: center;
+          .card-button-control {
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 15px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: rgb(28, 43, 61);
+            width: fit-content;
+            &:hover {
+              background-color: rgba(28, 43, 61, 0.8);
+            }
+
+            .MuiSvgIcon-root {
+              font-size: 12px;
+            }
+          }
+          div {
+            text-align: center;
+            font-weight: 700;
+            flex: 1;
+          }
+        }
+
+        .borrowed-book-detail-container {
+          .borrowed-book-item-list {
+            overflow-x: scroll;
+            max-height: 200px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            .borrowed-book-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 40%;
+              margin-bottom: 10px;
+              padding-bottom: 10px;
+              border-bottom: 1px solid gray;
+              border-bottom-style: dashed;
+              margin-right: 20px;
+              // border: 1px solid rgb(28, 43, 61);
+              .borrowed-book-item-image {
+                width: 60px;
+                height: 40px;
+                object-fit: fill;
+                margin-left: 10px;
+              }
+              .borrowed-book-item-content {
+                font-weight: 700;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-left: 10px;
+
+                .borrowed-book-item-discountOff {
+                  border-radius: 15px;
+                  padding: 5px 10px;
+                  color: white;
+                  background-color: orangered;
+                  width: fit-content;
+                  font-size: 12px;
+                  font-style: italic;
+                }
+                .borrowed-book-item-name {
+                  max-width: 150px;
+                  word-break: keep-all;
+                }
+              }
+              .borrowed-book-item-quantity {
+                font-weight: 700;
+                margin-left: 10px;
+              }
+              .borrowed-book-item-result {
+                border-radius: 15px;
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                background-color: rgb(28, 43, 61);
+                margin-left: 10px;
+              }
+            }
+          }
+          .borrowed-book-total {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            margin-right: 250px;
+            margin-top: 10px;
+            label {
+              font-weight: 700;
+            }
+            .borrowed-book-total-content {
+              margin-left: 20px;
+              border-radius: 15px;
+              padding: 5px 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              background-color: rgb(28, 43, 61);
+            }
+          }
+        }
+      }
+    }
+  }
+}

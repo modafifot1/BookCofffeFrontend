@@ -1,14 +1,7 @@
 import React from "react";
 import Rating from "@mui/material/Rating";
 import NoImage from "../../assets/noImage.png";
-const item = {
-  title: "Classical Mythology",
-  author: "Testament",
-  rating: 3.8,
-  yearOfPublication: 1998,
-  imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-  quantity: 5,
-};
+
 export const BookCard = ({ item, handleClick }) => {
   return (
     <div
@@ -24,7 +17,7 @@ export const BookCard = ({ item, handleClick }) => {
       </div>
       <div className="book-content">
         <div className="book-name">
-          {`${item.title ? item.title : "Tên sản phẩm"} (${
+          {`${item.title ? item.title : "Tên sách"} (${
             item.yearOfPublication || 0
           })`}
         </div>

@@ -162,11 +162,12 @@ const bookSlice = createSlice({
       state.book.loading = false;
       state.book.status = action.payload.status;
       state.book.msg = action.payload.msg;
-      const newBook = action.payload.food;
-      const foodIndex = state.products.findIndex(
+      const newBook = action.payload.book;
+      const bookIndex = state.books.data.findIndex(
         (ele) => ele._id === newBook._id
       );
-      state.products[foodIndex] = newBook;
+      console.log("Sssd", bookIndex);
+      state.books.data[bookIndex] = newBook;
     },
     [deleteBook.pending](state, action) {
       state.book.loading = true;
@@ -182,7 +183,7 @@ const bookSlice = createSlice({
       state.book.loading = false;
       state.book.msg = action.payload.msg;
       state.status = action.payload.status;
-      state.books = state.books.filter(
+      state.books.data = state.books.data.filter(
         (ele) => ele._id !== action.payload.bookId
       );
     },

@@ -23,62 +23,62 @@ import { BookDetail } from "../components/BookDetail/BookDetail";
 import { getBooks } from "../redux/slices/bookSlice";
 import { convertQuery2String } from "../utils";
 import { useHistory } from "react-router-dom";
-const dummyOrders = [
-  {
-    _id: "412d1sds",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-  {
-    _id: "412d1fdfdfsds",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-  {
-    _id: "412d1hgjhjhjsds",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-  {
-    _id: "41yuiyjdgdg2d1sds",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-  {
-    _id: "412d1slkjlwwfds",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-  {
-    _id: "412d1sdthfeewryykiuks",
-    title: "Classical Mythology",
-    author: "Testament",
-    rating: 3.8,
-    yearOfPublication: 1998,
-    imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-    quantity: 5,
-  },
-];
+// const dummyOrders = [
+//   {
+//     _id: "412d1sds",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+//   {
+//     _id: "412d1fdfdfsds",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+//   {
+//     _id: "412d1hgjhjhjsds",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+//   {
+//     _id: "41yuiyjdgdg2d1sds",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+//   {
+//     _id: "412d1slkjlwwfds",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+//   {
+//     _id: "412d1sdthfeewryykiuks",
+//     title: "Classical Mythology",
+//     author: "Testament",
+//     rating: 3.8,
+//     yearOfPublication: 1998,
+//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
+//     quantity: 5,
+//   },
+// ];
 export const BookManagement = () => {
   const history = useHistory();
   const [query, setQuery] = useState(null);
@@ -206,6 +206,8 @@ export const BookManagement = () => {
                     name: "orderBy",
                   }}
                 >
+                  <option value={"title"}>Tên</option>
+
                   <option value={"yearOfPublication"}> Năm xuất bản</option>
                   <option value={"rating"}>Đánh giá</option>
                 </NativeSelect>
@@ -252,7 +254,7 @@ export const BookManagement = () => {
           rowSpacing={3}
           columnSpacing={4}
         >
-          {dummyOrders.map((item, index) => {
+          {books.data.map((item, index) => {
             return (
               <Grid key={item._id} item xs={6} md={4} lg={3}>
                 <BookCard
@@ -284,7 +286,7 @@ export const BookManagement = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <BookDetail productId={bookDetailId} onClose={handleClose}></BookDetail>
+        <BookDetail bookId={bookDetailId} onClose={handleClose}></BookDetail>
       </Modal>
       <Notification notify={notify} setNotify={setNotify} />
     </div>

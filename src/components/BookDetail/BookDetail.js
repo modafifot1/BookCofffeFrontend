@@ -45,7 +45,7 @@ export const BookDetail = ({ bookId, onClose }) => {
   //   imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
   //   quantity: 5,
   // };
-  const loading = false;
+  // const loading = false;
   const [isDisabled, setIsDisabled] = useState(bookId ? true : false);
   const [localError, setLocalError] = useState({
     title: "",
@@ -95,9 +95,9 @@ export const BookDetail = ({ bookId, onClose }) => {
   };
   const onCreateFood = () => {
     if (!bookId && onValidate()) {
-      dispatch(createBook(book));
+      dispatch(createBook(book.data));
     } else {
-      dispatch(updateBookById(book));
+      dispatch(updateBookById(book.data));
     }
   };
   const onTextFieldFocus = (event) => {
@@ -109,7 +109,7 @@ export const BookDetail = ({ bookId, onClose }) => {
 
   return (
     <div className="book-detail-container">
-      {loading && <SpinLoading></SpinLoading>}
+      {book.loading && <SpinLoading></SpinLoading>}
       <Box sx={style} className="book-detail-box">
         <div className="book-detail-icon-close">
           <IconButton aria-label="delete" size="large" onClick={onClose}>
@@ -183,7 +183,7 @@ export const BookDetail = ({ bookId, onClose }) => {
         )}
         <div className="book-detail-content">
           <div className="book-detail-display">
-            <BookCard item={book}></BookCard>
+            <BookCard item={book.data}></BookCard>
           </div>
           <div className="book-detail-info">
             <TextField
