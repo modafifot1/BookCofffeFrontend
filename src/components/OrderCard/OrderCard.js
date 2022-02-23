@@ -6,7 +6,7 @@ import moment from "moment";
 import cn from "classnames";
 import { ArrowBackIos } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderById } from "../../redux/slices/orderSlice";
+import { getOrderById, updateOrderById } from "../../redux/slices/orderSlice";
 import { SpinLoading } from "../common/SpinLoading";
 import { ConfirmModal } from "../Modal/CofirmModal";
 // const order = {
@@ -217,7 +217,8 @@ export const OrderCard = ({ order, orders, setOrders }) => {
   const [data, setData] = useState({});
   const [isOpenModal, setIsOpenModal] = React.useState(false);
   const updateOrder = (orderId) => {
-    setIsOpenModal(true);
+    setIsOpenModal(false);
+    dispatch(updateOrderById(orderId));
   };
   useEffect(() => {
     setData(order);
@@ -299,9 +300,16 @@ export const OrderCard = ({ order, orders, setOrders }) => {
                   <button onClick={() => onDetail(data?._id)}>
                     Xem chi tiết
                   </button>
-                  <button className="next-button" onClick={updateOrder}>
-                    Chuyển trạng thái
-                  </button>
+                  {data.statusId === 2 ? (
+                    ""
+                  ) : (
+                    <button
+                      className="next-button"
+                      onClick={() => setIsOpenModal(true)}
+                    >
+                      Chuyển trạng thái
+                    </button>
+                  )}
                 </div>
               </div>
               <div className="order-card-detail">
@@ -394,7 +402,7 @@ export const OrderCard = ({ order, orders, setOrders }) => {
       </div>
       <ConfirmModal
         open={isOpenModal}
-        handleSubmit={updateOrder}
+        handleSubmit={() => updateOrder(order._id)}
         // title="Cập nhật đơn hàng"
         message={`Cập nhật đơn hàng sang `}
         orderStatus={`${data?.statusId === 0 ? "Đang chuẩn bị" : "Hoàn thành"}`}

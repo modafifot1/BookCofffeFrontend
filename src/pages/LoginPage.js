@@ -104,6 +104,8 @@ export const LoginPage = () => {
         />
 
         <HeaderContainer>
+          <HeaderText>{"Bcoffee"}</HeaderText>
+
           <HeaderText>{"Chào mừng bạn"}</HeaderText>
           <SmallText>{"Vui lòng đăng nhập để tiếp tục!"}</SmallText>
         </HeaderContainer>
@@ -142,9 +144,9 @@ export const LoginPage = () => {
             </div>
             <MutedLink href={"#"}>Quên mật khẩu?</MutedLink>
             <SubmitButton onclick={onSubmit}>Đăng nhập</SubmitButton>
-            <MutedLink href="#">
+            {/* <MutedLink href="#">
               Bạn chưa có tài khoản? <BoldLink href="#">Đăng ký</BoldLink>
-            </MutedLink>
+            </MutedLink> */}
           </FormContainer>
         </BoxContainer>
       </InnerContainer>

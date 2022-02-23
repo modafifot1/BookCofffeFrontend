@@ -8,6 +8,6 @@ export const orderApi = {
     return axiosClient.get(`/orders/${orderId}`);
   },
   updateOrderById(orderId) {
-    return axiosClient.put(`/orders/${orderId}`);
+    return axiosClient.put(`/orders/${orderId}/statuses`);
   },
 };

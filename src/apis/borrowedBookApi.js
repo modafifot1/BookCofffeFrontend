@@ -1,13 +1,13 @@
 import { axiosClient } from "./axiosClient";
 
 export const borrowedBookApi = {
-  getBorrowedBookByStatus(borrowedBooktatus) {
-    return axiosClient.get(`/borrowedBook/statuses/${borrowedBooktatus}`);
+  getBorrowedBookByStatus(borrowedBookStatus) {
+    return axiosClient.get(`/borrowedBooks/statuses/${borrowedBookStatus}`);
   },
   getBorrowedBookById(borrowedBookId) {
-    return axiosClient.get(`/borrowedBook/${borrowedBookId}`);
+    return axiosClient.get(`/borrowedBooks/${borrowedBookId}`);
   },
   updateBorrowedBookById(borrowedBookId) {
-    return axiosClient.put(`/borrowedBook/${borrowedBookId}`);
+    return axiosClient.put(`/borrowedBooks/${borrowedBookId}`);
   },
 };

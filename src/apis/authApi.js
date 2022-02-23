@@ -7,4 +7,7 @@ export const authApi = {
       },
     });
   },
+  logout() {
+    return axiosClient.post("/auth/logout");
+  },
 };

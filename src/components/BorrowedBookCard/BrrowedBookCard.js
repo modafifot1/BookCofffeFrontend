@@ -9,81 +9,60 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getOrderById } from "../../redux/slices/orderSlice";
 import { SpinLoading } from "../common/SpinLoading";
 import { ConfirmModal } from "../Modal/CofirmModal";
-const borrowedBook = {
-  _id: "hgdhsghsd26565",
-  customerName: "Nguyễn Quang Phiêu",
-  phoneNumber: "0364782449",
-  statusId: 2,
-  createAt: "2021-05-20T05:00:13.401Z",
-  item: {
-    imageUrl: "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
-  },
-  tableCode: 5,
-  numOfItems: 3,
-};
-let orders = [
+import {
+  getBorrowedBookById,
+  updateBorrowedBookById,
+} from "../../redux/slices/borrowedBookSlice";
+// const borrowedBook = {
+//   _id: "hgdhsghsd26565",
+//   borrowerName: "Nguyễn Quang Phiêu",
+//   phoneNumber: "0364782449",
+//   statusId: 0,
+//   createAt: "2021-05-20T05:00:13.401Z",
+//   item: {
+//     imageUrl: "https://images.gr-assets.com/books/1447303603m/2767052.jpg",
+//   },
+//   tableCode: 5,
+//   numOfItems: 3,
+//   showBack: false,
+// };
+let borrowedBookDetail = {};
+borrowedBookDetail.data = [
   {
-    _id: "hgdhsghsd26565",
-    customerName: "Nguyễn Quang Phiêu",
-    phoneNumber: "0364782449",
-    statusId: 1,
-    paymentMethod: "WAL",
-    total: 100000,
-    createAt: "2021-05-20T05:00:13.401Z",
-    isPaid: true,
-    item: {
-      imageUrl:
-        "https://res.cloudinary.com/dacnpm17n2/image/upload/v1621486813/n5zcnq6hwkx0vnlwdl0t.jpg",
-    },
-    tableCode: 5,
-    numOfItems: 3,
-  },
-  {
-    _id: "hgdhsghsd26dd565",
-    customerName: "Nguyễn Quang Phiêu",
-    phoneNumber: "0364782449",
-    statusId: 1,
-    paymentMethod: "WAL",
-    total: 100000,
-    createAt: "2021-05-20T05:00:13.401Z",
-    isPaid: true,
-    item: {
-      imageUrl:
-        "https://res.cloudinary.com/dacnpm17n2/image/upload/v1621486813/n5zcnq6hwkx0vnlwdl0t.jpg",
-    },
-    tableCode: 5,
-    numOfItems: 3,
+    author: "Chetan Bhagat",
+    bookId: 105578,
+    imageUrl: "https://images.gr-assets.com/books/1320500924m/105578.jpg",
+    numOfFeedback: 40718,
+    quantity: 5,
+    rating: 2.47,
+    title: "One Night @ The Call Center",
+    yearOfPublication: 2005,
+    __v: 0,
+    _id: "6211be97e335d10c30be58d3",
   },
   {
-    _id: "hgdhsggfgfhsd26565",
-    customerName: "Nguyễn Quang Phiêu",
-    phoneNumber: "0364782449",
-    statusId: 1,
-    total: 100000,
-    createAt: "2021-05-20T05:00:13.401Z",
-    isPaid: true,
-    item: {
-      imageUrl:
-        "https://res.cloudinary.com/dacnpm17n2/image/upload/v1621486813/n5zcnq6hwkx0vnlwdl0t.jpg",
-    },
-    tableCode: 5,
-    numOfItems: 3,
+    rating: 2.67,
+    numOfFeedback: 28299,
+    _id: "6211be98e335d10c30be5fb0",
+    bookId: 783291,
+    title: "The Almost Moon",
+    author: "Alice Sebold",
+    yearOfPublication: 2007,
+    imageUrl: "https://images.gr-assets.com/books/1310421579m/783291.jpg",
+    quantity: 5,
+    __v: 0,
   },
   {
-    _id: "hgdhsghsdjkjj26565",
-    customerName: "Nguyễn Quang Phiêu",
-    phoneNumber: "0364782449",
-    statusId: 1,
-    paymentMethod: "WAL",
-    total: 100000,
-    createAt: "2021-05-20T05:00:13.401Z",
-    isPaid: true,
-    item: {
-      imageUrl:
-        "https://res.cloudinary.com/dacnpm17n2/image/upload/v1621486813/n5zcnq6hwkx0vnlwdl0t.jpg",
-    },
-    tableCode: 5,
-    numOfItems: 3,
+    rating: 2.67,
+    numOfFeedback: 28299,
+    _id: "6211be98e388d10c30be5fb0",
+    bookId: 783291,
+    title: "The Almost Moon",
+    author: "Alice Sebold",
+    yearOfPublication: 2007,
+    imageUrl: "https://images.gr-assets.com/books/1310421579m/783291.jpg",
+    quantity: 5,
+    __v: 0,
   },
 ];
 const item = {
@@ -102,7 +81,7 @@ const item = {
   numOfStars: 5,
   quantity: 2,
 };
-const orderItems = [
+const items = [
   {
     confirmed: true,
     _id: "60a5ecdd98cf780015b07baal",
@@ -206,7 +185,13 @@ const orderItems = [
     quantity: 2,
   },
 ];
-export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
+export const BorrowedBookCard = ({
+  borrowedBook,
+  borrowedBooks,
+  setBorrowedBooks,
+}) => {
+  // setBorrowedBooks(borrowedBook);
+
   const { borrowedBook: borrowedBookDetail } = useSelector(
     (state) => state.borrowedBook
   );
@@ -214,28 +199,12 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
   const [data, setData] = useState({});
   const [isOpenModal, setIsOpenModal] = React.useState(false);
   const updateBorrowedBook = (borrowedBookId) => {
-    setIsOpenModal(true);
+    dispatch(updateBorrowedBookById(borrowedBookId));
   };
   useEffect(() => {
     setData(borrowedBook);
   }, [borrowedBook]);
-  // function handleClick(borrowedBookId) {
-  //   let temp = borrowedBooks;
-  //   temp = temp.map((borrowedBook) => {
-  //     if (
-  //       selectedItemId &&
-  //       borrowedBook._id === selectedItemId &&
-  //       borrowedBook.showBack === true
-  //     )
-  //       return { ...borrowedBook, showBack: false };
-  //     else if (borrowedBook.showBack === false && borrowedBook._id === borrowedBookId)
-  //       return { ...borrowedBook, showBack: true };
-  //     else return borrowedBook;
-  //   });
-  //   console.log("Temp: ", temp);
-  //   setborrowedBooks(temp);
-  //   setSelectedItemId(borrowedBookId);
-  // }
+
   const onDetail = (borrowedBookId) => {
     let temp = borrowedBooks;
     temp = temp.map((borrowedBook) => {
@@ -249,8 +218,9 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
         showBack: false,
       };
     });
-    setborrowedBooks(temp);
-    // dispatch(getBorrowedBookById(borrowedBookId));
+    console.log("Temp: ", temp);
+    setBorrowedBooks(temp);
+    dispatch(getBorrowedBookById(borrowedBookId));
   };
   const onBack = (borrowedBookId) => {
     let temp = borrowedBooks;
@@ -262,18 +232,19 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
         };
       return borrowedBook;
     });
-    setborrowedBooks(temp);
+    setBorrowedBooks(temp);
   };
   // useEffect(() => {.flip-card-outer .flip-card-inner .card.front
   //   if (!selectedItemId) return;
   //   dispatch(getborrowedBookById(selectedItemId));
   // }, [selectedItemId]);
+  console.log("data", data.showBack);
   return (
     <div>
       <div className="flip-card-outer">
         <div
           className={cn("flip-card-inner", {
-            showBack: data?.showBack || false,
+            showBack: !!data?.showBack,
             "hover-trigger": false,
           })}
         >
@@ -297,7 +268,7 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
                 <div className="borrowed-book-card-detail">
                   <div className="borrowed-book-card-detail-item">
                     <label>Tên khách hàng: </label>
-                    <div className="detail-content">{data?.customerName}</div>
+                    <div className="detail-content">{data?.borrowerName}</div>
                   </div>
                   <div className="borrowed-book-card-detail-item">
                     <label>Số điện thoại: </label>
@@ -321,6 +292,16 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
                       )}
                     </div>
                   </div>
+                  {data?.updateAt && (
+                    <div className="borrowed-book-card-detail-item">
+                      <label>Cập nhật lần cuối: </label>
+                      <div className="detail-content">
+                        {moment(new Date(data?.updateAt)).format(
+                          "DD/MM/YYYY, h:mm:ss"
+                        )}
+                      </div>
+                    </div>
+                  )}
                   <div className="borrowed-book-card-detail-status">
                     {/* <img
                       src={data?.statusId === 2 ? "" : UnPaidIcon}
@@ -331,12 +312,18 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
                       <button onClick={() => onDetail(data?._id)}>
                         Xem chi tiết
                       </button>
-                      <button
-                        className="next-button"
-                        onClick={updateBorrowedBook}
-                      >
-                        Chuyển trạng thái
-                      </button>
+                      {data.statusId !== 2 && (
+                        <button
+                          className="next-button"
+                          onClick={() => setIsOpenModal(true)}
+                        >
+                          {data.statusId === 0
+                            ? "Xác nhận mượn"
+                            : data.statusId === 1
+                            ? "Xác nhận trả"
+                            : "Hoàn thành"}
+                        </button>
+                      )}
                     </div>
                   </div>
                   <div className="right-side"></div>
@@ -352,7 +339,7 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
               >
                 <ArrowBackIos></ArrowBackIos>Quay lại
               </p>
-              <div>Chi tiết đơn hàng</div>
+              <div>Thông tin mượn sách</div>
             </div>
 
             <div className="borrowed-book-detail-container">
@@ -369,29 +356,21 @@ export const BorrowedBookCard = ({ borrowedBooks, setborrowedBooks }) => {
                       ></img>
                       <div className="borrowed-book-item-content">
                         <div className="borrowed-book-item-name">
-                          {item?.name}
+                          {`${item?.title} (năm ${item.yearOfPublication})`}
                         </div>
-                        {item?.discountOff && (
-                          <div className="borrowed-book-item-discountOff">{`${item?.discountOff}% off`}</div>
-                        )}
                       </div>
-                      <div className="borrowed-book-item-quantity">{`x ${item?.quantity}`}</div>
-                      <div className="borrowed-book-item-result"> = 100000</div>
+                      <div className="borrowed-book-item-quantity">{`x ${item?.quantity} quyển`}</div>
                     </div>
                   ))}
                 </div>
               )}
-              <div className="borrowed-book-total">
-                <label>Tổng cộng:</label>
-                <div className="borrowed-book-total-content">10000 vnd</div>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <ConfirmModal
         open={isOpenModal}
-        handleSubmit={updateBorrowedBook}
+        handleSubmit={() => updateBorrowedBook(borrowedBook._id)}
         // title="Cập nhật đơn hàng"
         message={`Cập nhật đơn hàng sang `}
         orderStatus={`${data?.statusId === 0 ? "Đang chuẩn bị" : "Hoàn thành"}`}

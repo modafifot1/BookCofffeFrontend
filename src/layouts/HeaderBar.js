@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -7,7 +7,10 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSideBar } from "../redux/slices";
-
+import { Badge } from "@material-ui/core";
+import { Notifications } from "@material-ui/icons";
+import AvatarMenu from "../components/common/AvatarMenu";
+import ModalProfileAdmin from "../components/common/ModalProfileAdmin";
 const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +42,7 @@ export const HeaderBar = () => {
 
   const classes = useStyles();
   const { isSideBarCollapsed } = useSelector((state) => state.control);
+  const [openProfile, setOpenProfile] = useState(false);
 
   return (
     <AppBar
@@ -57,7 +61,24 @@ export const HeaderBar = () => {
         >
           <MenuIcon />
         </IconButton>
+        <div
+          style={{ marginLeft: isSideBarCollapsed ? "auto" : "unset" }}
+          className="flex"
+        >
+          {/* <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={17} color="secondary">
+              <Notifications color="action" />
+            </Badge>
+          </IconButton> */}
+          <AvatarMenu openModalProfile={() => setOpenProfile(true)} />
+        </div>
       </Toolbar>
+      {openProfile && (
+        <ModalProfileAdmin
+          isModalVisible={true}
+          close={() => setOpenProfile(false)}
+        />
+      )}
     </AppBar>
   );
 };

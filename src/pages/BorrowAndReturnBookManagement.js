@@ -4,8 +4,8 @@ import { Box, CircularProgress } from "@material-ui/core";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import { StepButton } from "@mui/material";
-import { OrderCard } from "../components/OrderCard/OrderCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getBorrowedBooksByStatus } from "../redux/slices/borrowedBookSlice";
 import { BorrowedBookCard } from "../components/BorrowedBookCard/BrrowedBookCard";
 const steps = ["Tất cả", "Chờ xác nhận", "Danh sách mượn", "Danh sách trả"];
 
@@ -14,11 +14,22 @@ export const BorrowAndReturnBookManagement = () => {
   const [completed, setCompleted] = React.useState({});
   const { borrowedBooks } = useSelector((state) => state.borrowedBook);
   const [data, setData] = useState([]);
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBorrowedBooksByStatus(activeStep));
+  }, [activeStep, dispatch]);
+
   const handleStep = (step) => () => {
     console.log("Step: ", step);
     setActiveStep(step - 1);
   };
+  useEffect(() => {
+    setData(borrowedBooks.data);
+  }, [borrowedBooks]);
+
+  console.log("xx:", data);
+  console.log("aaaaaa:", borrowedBooks.data);
 
   return (
     <div className="borrow-and-return-book-management-container">
@@ -47,19 +58,7 @@ export const BorrowAndReturnBookManagement = () => {
           <div className="loading">
             <CircularProgress color="success" />
           </div>
-        ) : (
-          <BorrowedBookCard
-            // borrowedBook={borrowedBook}
-            borrowedBooks={data}
-            setBorrowedBooks={setData}
-          ></BorrowedBookCard>
-        )}
-      </div>
-    </div>
-  );
-};
-{
-  /* borrowedBooks.data.length ? (
+        ) : data.length ? (
           data.map((borrowedBook) => (
             <BorrowedBookCard
               borrowedBook={borrowedBook}
@@ -71,5 +70,8 @@ export const BorrowAndReturnBookManagement = () => {
           <div className="loading result">
             Hiện tại không có đơn hàng nào trong mục này
           </div>
-        ) */
-}
+        )}
+      </div>
+    </div>
+  );
+};

@@ -7,7 +7,7 @@ export const withAuth = (Component) => (props) => {
   const token = Cookies.get("token");
   useEffect(() => {
     if (token) {
-      history.push("/dashboard");
+      history.push("/statistic-management");
     }
   }, [token]);
   return (

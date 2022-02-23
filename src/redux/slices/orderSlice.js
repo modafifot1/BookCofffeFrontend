@@ -99,7 +99,7 @@ const orderSlice = createSlice({
       );
       state.orders.data = [
         ...state.orders.data.slice(0, index),
-        ...state.orders.data.slice(index + 1, -1),
+        ...state.orders.data.slice(index + 1),
       ];
     },
     [updateOrderById.rejected](state, action) {

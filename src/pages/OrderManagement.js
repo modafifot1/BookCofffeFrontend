@@ -63,7 +63,7 @@ export const OrderManagement = () => {
           <div className="loading">
             <CircularProgress color="success" />
           </div>
-        ) : orders.data.length ? (
+        ) : data.length != 0 ? (
           data.map((order) => (
             <OrderCard
               order={order}

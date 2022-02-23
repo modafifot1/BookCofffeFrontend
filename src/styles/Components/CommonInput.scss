@@ -7,13 +7,13 @@
   height: 50px;
   border-radius: 4px;
   position: relative;
-  background-color: rgba(110, 199, 176, 0.8);
+  background-color: rgba(19, 36, 62);
   transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out;
   margin-bottom: 5px;
 }
 
 .field:hover {
-  background-color: rgb(110, 199, 176);
+  background-color: rgba(19, 36, 62, 0.8);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
 }
 

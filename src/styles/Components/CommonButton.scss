@@ -1,6 +1,6 @@
 .normal-button {
   width: 100%;
-  padding: 11px 40%;
+  padding: 11px 40px;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -13,12 +13,26 @@
   filter: brightness(1.03);
 }
 .submit-button {
-  background: rgb(110, 199, 176);
+  // background: rgb(110, 199, 176);
+  // background: linear-gradient(
+  //   58deg,
+  //   rgba(110, 199, 176, 1) 20%,
+  //   rgba(110, 199, 176, 1) 100%
+  // );
+  background: rgb(25, 28, 63);
   background: linear-gradient(
     58deg,
-    rgba(110, 199, 176, 1) 20%,
-    rgba(110, 199, 176, 1) 100%
+    rgba(25, 28, 63, 1) 20%,
+    rgba(25, 28, 63, 1) 100%
   );
+  &:hover {
+    background: rgb(46, 50, 92);
+    background: linear-gradient(
+      58deg,
+      rgb(51, 57, 126) 20%,
+      rgb(49, 54, 112) 100%
+    );
+  }
 }
 
 .add-button {

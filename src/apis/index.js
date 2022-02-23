@@ -6,6 +6,7 @@ import { customerApi } from "./customerApi";
 import { orderApi } from "./orderApi";
 import { bookApi } from "./bookApi";
 import { borrowedBookApi } from "./borrowedBookApi";
+import { profileApi } from "./profileApi";
 export {
   authApi,
   productApi,
@@ -15,4 +16,5 @@ export {
   borrowedBookApi,
   orderApi,
   customerApi,
+  profileApi,
 };

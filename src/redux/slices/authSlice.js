@@ -3,7 +3,11 @@ import { authApi, axiosClient } from "../../apis/index";
 import Cookies from "js-cookie";
 const initialState = {
   error: null,
-  user: null,
+  user: {
+    fullName: Cookies.get("fullName"),
+    imageUrl: Cookies.get("imageUrl"),
+    roleId: Cookies.get("roleId"),
+  },
   loading: false,
 };
 
@@ -14,6 +18,9 @@ export const login = createAsyncThunk(
       console.log("Login Datasdsdsd: ", data);
       const res = await authApi.login(data);
       Cookies.set("token", res.token);
+      Cookies.set("fullName", res.fullName);
+      Cookies.set("imageUrl", res.imageUrl);
+      Cookies.set("roleId", res.roleId);
       axiosClient.defaults.headers.authorization = `Bearer ${Cookies.get(
         "token"
       )}`;
@@ -23,10 +30,30 @@ export const login = createAsyncThunk(
     }
   }
 );
+export const logout = createAsyncThunk(
+  "logout",
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      return authApi.logout();
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setImageUrl(state, action) {
+      state.user.imageUrl = action.payload.newAvatar;
+      Cookies.set("imageUrl", action.payload.newAvatar);
+    },
+    setInfo(state, action) {
+      console.log(action.payload);
+      state.user.fullName = action.payload.profile.fullName;
+      Cookies.set("fullName", action.payload.profile.fullName);
+    },
+  },
   extraReducers: {
     [login.pending](state) {
       state.loading = true;
@@ -45,4 +72,5 @@ const authSlice = createSlice({
 });
 
 const { reducer: authReducer, actions } = authSlice;
+export const { setInfo, setImageUrl } = actions;
 export default authReducer;
