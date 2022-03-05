@@ -53,7 +53,7 @@ export const changePassword = createAsyncThunk(
   "changePassword",
   async (data, { rejectWithValue, dispatch }) => {
     try {
-      return profileApi.changePassword(data);
+      return await profileApi.changePassword(data);
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

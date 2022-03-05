@@ -28,4 +28,7 @@ export const bookApi = {
       },
     });
   },
+  getBookForYou(){
+    return axiosClient.get("/books/related-book/for-you")
+  }
 };

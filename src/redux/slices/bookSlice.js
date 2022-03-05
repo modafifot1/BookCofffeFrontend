@@ -20,6 +20,12 @@ const initialState = {
     loading: false,
     msg: "",
   },
+  relatedBooks: {
+    data: [],
+    status: null,
+    msg: "",
+    loading: false,
+  },
 };
 export const getBooks = createAsyncThunk(
   "/getBooks",
@@ -68,6 +74,17 @@ export const deleteBook = createAsyncThunk(
   async (bookId, { rejectWithValue, dispatch }) => {
     try {
       return await bookApi.deleteBook(bookId);
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getRelatedBooks = createAsyncThunk(
+  "getRelatedBooks",
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      return await bookApi.getBookForYou();
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -186,6 +203,22 @@ const bookSlice = createSlice({
       state.books.data = state.books.data.filter(
         (ele) => ele._id !== action.payload.bookId
       );
+    },
+    [getRelatedBooks.pending](state, action) {
+      state.relatedBooks.loading = true;
+      state.relatedBooks.msg = "";
+      state.relatedBooks.status = null;
+    },
+    [getRelatedBooks.fulfilled](state, action) {
+      state.relatedBooks.loading = false;
+      state.relatedBooks.msg = action.payload.msg;
+      state.relatedBooks.status = action.payload.status;
+      state.relatedBooks.data = action.payload.relatedBooks;
+    },
+    [getRelatedBooks.rejected](state, action) {
+      state.relatedBooks.loading = false;
+      state.relatedBooks.msg = action.payload.msg;
+      state.relatedBooks.status = action.payload.status;
     },
   },
 });
