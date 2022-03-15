@@ -14,13 +14,19 @@ import AddIcon from "@mui/icons-material/Add";
 import EnhancedTable from "../components/employeeTable/EnhancedTable";
 import { getEmployees, setEmployeeId } from "../redux/slices/employeeSlice";
 import { convertQuery2String } from "../utils";
+import { Notification } from "../components/common/Notification";
 
 export const EmployeeManagement = () => {
-  const { employees } = useSelector((state) => state.employee);
+  const { employees, employee } = useSelector((state) => state.employee);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState({
     searchText: "",
     employeeType: 0,
+  });
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
   });
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,6 +51,24 @@ export const EmployeeManagement = () => {
     const queryString = convertQuery2String(query);
     dispatch(getEmployees(queryString));
   }, [query]);
+  useEffect(() => {
+    if (employees.status) {
+      setNotify({
+        isOpen: true,
+        message: employees.msg,
+        type: employees.status < 300 ? "success" : "error",
+      });
+    }
+  }, [employees.status]);
+  useEffect(() => {
+    if (employee.status) {
+      setNotify({
+        isOpen: true,
+        message: employee.msg,
+        type: employee.status < 300 ? "success" : "error",
+      });
+    }
+  }, [employee.status]);
   return (
     <div className="employee-management-container">
       <div className="page-title">
@@ -100,6 +124,7 @@ export const EmployeeManagement = () => {
       ) : (
         <EnhancedTable data={data} setData={setData}></EnhancedTable>
       )}
+      <Notification notify={notify} setNotify={setNotify}></Notification>
     </div>
   );
 };

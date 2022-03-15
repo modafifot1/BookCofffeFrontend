@@ -38,6 +38,7 @@ export const LoginPage = () => {
       history.push("/product-management");
     }
   }, [history, user]);
+
   const onChangeValue = (event) => {
     const value = event.target.value.trim();
     let prop = {};
@@ -136,9 +137,9 @@ export const LoginPage = () => {
               onFocus={onFocus}
             />
             <div className={"error-msg"}>
-              {error?.msg?.includes("Password")
+              {error?.msg?.includes("Mật khẩu")
                 ? "Mật khẩu sai"
-                : error?.msg?.includes("Email")
+                : error?.msg?.includes("email")
                 ? "Tài khoản email không hợp lệ"
                 : ""}
             </div>

@@ -12,13 +12,19 @@ import { SearchInput } from "../components/common/CommonInput";
 import EnhancedTable from "../components/customerTable/EnhancedTable";
 import { getCustomers } from "../redux/slices/customerSlice";
 import { convertQuery2String } from "../utils";
+import { Notification } from "../components/common/Notification";
 
 export const CustomerManagement = () => {
-  const { customers } = useSelector((state) => state.customer);
+  const { customers, customer } = useSelector((state) => state.customer);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState({
     searchText: "",
     customerType: 0,
+  });
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
   });
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,6 +49,24 @@ export const CustomerManagement = () => {
     const queryString = convertQuery2String(query);
     dispatch(getCustomers(queryString));
   }, [query]);
+  useEffect(() => {
+    if (customers.status) {
+      setNotify({
+        isOpen: true,
+        message: customers.msg,
+        type: customers.status < 300 ? "success" : "error",
+      });
+    }
+  }, [customers.status]);
+  useEffect(() => {
+    if (customer.status) {
+      setNotify({
+        isOpen: true,
+        message: customer.msg,
+        type: customer.status < 300 ? "success" : "error",
+      });
+    }
+  }, [customer.status]);
   return (
     <div className="employee-management-container">
       <div className="page-title">
@@ -91,6 +115,7 @@ export const CustomerManagement = () => {
       ) : (
         <EnhancedTable data={data} setData={setData}></EnhancedTable>
       )}
+      <Notification notify={notify} setNotify={setNotify}></Notification>
     </div>
   );
 };

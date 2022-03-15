@@ -7,15 +7,23 @@ import { StepButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getBorrowedBooksByStatus } from "../redux/slices/borrowedBookSlice";
 import { BorrowedBookCard } from "../components/BorrowedBookCard/BrrowedBookCard";
+import { Notification } from "../components/common/Notification";
+
 const steps = ["Tất cả", "Chờ xác nhận", "Danh sách mượn", "Danh sách trả"];
 
 export const BorrowAndReturnBookManagement = () => {
   const [activeStep, setActiveStep] = React.useState(-1);
   const [completed, setCompleted] = React.useState({});
-  const { borrowedBooks } = useSelector((state) => state.borrowedBook);
+  const { borrowedBooks, borrowedBook } = useSelector(
+    (state) => state.borrowedBook
+  );
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
   useEffect(() => {
     dispatch(getBorrowedBooksByStatus(activeStep));
   }, [activeStep, dispatch]);
@@ -30,7 +38,24 @@ export const BorrowAndReturnBookManagement = () => {
 
   console.log("xx:", data);
   console.log("aaaaaa:", borrowedBooks.data);
-
+  useEffect(() => {
+    if (borrowedBooks.status) {
+      setNotify({
+        isOpen: true,
+        message: borrowedBooks.msg,
+        type: borrowedBooks.status < 300 ? "success" : "error",
+      });
+    }
+  }, [borrowedBooks.status]);
+  useEffect(() => {
+    if (borrowedBook.status) {
+      setNotify({
+        isOpen: true,
+        message: borrowedBook.msg,
+        type: borrowedBook.status < 300 ? "success" : "error",
+      });
+    }
+  }, [borrowedBook.status]);
   return (
     <div className="borrow-and-return-book-management-container">
       <div className="page-title">
@@ -72,6 +97,7 @@ export const BorrowAndReturnBookManagement = () => {
           </div>
         )}
       </div>
+      <Notification notify={notify} setNotify={setNotify}></Notification>
     </div>
   );
 };

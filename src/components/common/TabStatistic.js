@@ -91,29 +91,32 @@ export default function TabsStatistic() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          {generalInfo.popularFoods.map((food, index) => (
-            <div key={index} className="item-favorite-block">
-              <img
-                style={{ width: 80, height: 80, borderRadius: 12 }}
-                src={food.imageUrl}
-                alt=""
-              />
-              <span style={{ width: 120, fontSize: 16 }}>{food.name}</span>
-              <span>
-                Lượt mua: {food.amountOfBuy}
-                <img
-                  style={{
-                    marginLeft: 4,
-                    marginBottom: 8,
-                    width: 44,
-                    height: 44,
-                  }}
-                  src={DevelopIcon}
-                  alt=""
-                />
-              </span>
-            </div>
-          ))}
+          {generalInfo.popularFoods.map((food, index) => {
+            if (food)
+              return (
+                <div key={index} className="item-favorite-block">
+                  <img
+                    style={{ width: 80, height: 80, borderRadius: 12 }}
+                    src={food.imageUrl}
+                    alt=""
+                  />
+                  <span style={{ width: 120, fontSize: 16 }}>{food.name}</span>
+                  <span>
+                    Lượt mua: {food.amountOfBuy}
+                    <img
+                      style={{
+                        marginLeft: 4,
+                        marginBottom: 8,
+                        width: 44,
+                        height: 44,
+                      }}
+                      src={DevelopIcon}
+                      alt=""
+                    />
+                  </span>
+                </div>
+              );
+          })}
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           {generalInfo.popularBorrowedBooks.map((r, index) => (

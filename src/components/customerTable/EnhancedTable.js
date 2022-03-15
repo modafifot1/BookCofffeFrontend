@@ -61,7 +61,7 @@ export default function EnhancedTable({ data, setData }) {
       customer.status &&
       customer.status < 300 &&
       customer.msg &&
-      !customer.msg.includes("Get")
+      !customer.msg.includes("chi")
     ) {
       console.log("vo");
       handleClose();

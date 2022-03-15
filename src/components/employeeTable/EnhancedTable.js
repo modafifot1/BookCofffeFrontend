@@ -57,16 +57,11 @@ export default function EnhancedTable({ data, setData }) {
     setRows(data);
   }, [data]);
   useEffect(() => {
-    console.log(
-      "Employee Status: ",
-      employee.status,
-      employee.msg.includes("Get")
-    );
     if (
       employee.status &&
       employee.status < 300 &&
       employee.msg &&
-      !employee.msg.includes("Get")
+      !employee.msg.includes("chi")
     ) {
       console.log("vo");
       handleClose();

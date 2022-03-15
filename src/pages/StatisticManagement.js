@@ -22,6 +22,8 @@ import {
   getRevenuesInfo,
 } from "../redux/slices/statisticSlice";
 import { dateFunction } from "../utils";
+import { Notification } from "../components/common/Notification";
+
 const { getMonthsByquater, getQuaterByMonth } = dateFunction;
 ChartJS.register(
   CategoryScale,
@@ -55,6 +57,11 @@ export const StatisticManagement = () => {
   const [labels, setLabels] = useState([]);
   const [datasets, setDatasets] = useState([]);
   const [selectedItem, setSelectedItem] = useState(0);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
   const executeData = () => {
     let tempLabels = [
       "Chủ nhật",
@@ -116,6 +123,15 @@ export const StatisticManagement = () => {
   useEffect(() => {
     executeData();
   }, [revenuesInfo]);
+  useEffect(() => {
+    if (revenuesInfo.status) {
+      setNotify({
+        isOpen: true,
+        message: revenuesInfo.msg,
+        type: revenuesInfo.status < 300 ? "success" : "error",
+      });
+    }
+  }, [revenuesInfo.status]);
   return (
     <div className="statistic-management-container">
       <div className="page-title">
@@ -186,6 +202,7 @@ export const StatisticManagement = () => {
           </div>
         </div>
       </div>
+      <Notification notify={notify} setNotify={setNotify}></Notification>
     </div>
   );
 };

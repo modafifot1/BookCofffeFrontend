@@ -23,62 +23,7 @@ import { BookDetail } from "../components/BookDetail/BookDetail";
 import { getBooks } from "../redux/slices/bookSlice";
 import { convertQuery2String } from "../utils";
 import { useHistory } from "react-router-dom";
-// const dummyOrders = [
-//   {
-//     _id: "412d1sds",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-//   {
-//     _id: "412d1fdfdfsds",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-//   {
-//     _id: "412d1hgjhjhjsds",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-//   {
-//     _id: "41yuiyjdgdg2d1sds",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-//   {
-//     _id: "412d1slkjlwwfds",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-//   {
-//     _id: "412d1sdthfeewryykiuks",
-//     title: "Classical Mythology",
-//     author: "Testament",
-//     rating: 3.8,
-//     yearOfPublication: 1998,
-//     imageUrl: "http://images.amazon.com/images/P/0811801128.01.MZZZZZZZ.jpg",
-//     quantity: 5,
-//   },
-// ];
+
 export const BookManagement = () => {
   const history = useHistory();
   const [query, setQuery] = useState(null);
@@ -105,7 +50,8 @@ export const BookManagement = () => {
     });
     setTemp(params.get("page") || 1);
   }, [history]);
-  const { books } = useSelector((state) => state.book);
+
+  const { books, book } = useSelector((state) => state.book);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!query) return;
@@ -118,6 +64,24 @@ export const BookManagement = () => {
     console.log("Query string: ", queryString);
     dispatch(getBooks(queryString));
   }, [query]);
+  useEffect(() => {
+    if (books.status) {
+      setNotify({
+        isOpen: true,
+        message: books.msg,
+        type: books.status < 300 ? "success" : "error",
+      });
+    }
+  }, [books.status]);
+  useEffect(() => {
+    if (book.status) {
+      setNotify({
+        isOpen: true,
+        message: book.msg,
+        type: book.status < 300 ? "success" : "error",
+      });
+    }
+  }, [book.status]);
   const onSearchClick = (searchText) => {
     setQuery({
       ...query,

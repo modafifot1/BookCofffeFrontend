@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const baseURL = "https://hidden-citadel-92766.herokuapp.com/api/v1";
-// const baseURL = "http://localhost:8000/api/v1";
+// const baseURL = "https://hidden-citadel-92766.herokuapp.com/api/v1";
+const baseURL = "http://localhost:8000/api/v1";
 
 export const axiosClient = axios.create({
   baseURL,
